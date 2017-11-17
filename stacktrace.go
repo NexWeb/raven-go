@@ -75,10 +75,9 @@ func GetOrNewStacktrace(err error, skip int, context int, appPackagePrefixes []s
 		}
 		return &Stacktrace{Frames: frames}
 	} else {
-		return NewStacktrace(skip + 1, context, appPackagePrefixes)
+		return NewStacktrace(skip+1, context, appPackagePrefixes)
 	}
 }
-
 
 // Intialize and populate a new stacktrace, skipping skip frames.
 //
@@ -252,3 +251,4 @@ func init() {
 		trimPaths = append(trimPaths, prefix)
 	}
 }
+
