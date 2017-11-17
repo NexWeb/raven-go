@@ -1,4 +1,5 @@
 package raven
+
 // Writer struct
 type Writer struct {
 	Client *Client
