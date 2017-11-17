@@ -11,7 +11,7 @@ import (
 )
 
 // NewHTTP ...
-func NewHTTP(req *http.Request) *Http {
+func NewHttp(req *http.Request) *Http {
 	proto := "http"
 	if req.TLS != nil || req.Header.Get("X-Forwarded-Proto") == "https" {
 		proto = "https"
@@ -46,7 +46,7 @@ func sanitizeQuery(query url.Values) url.Values {
 }
 
 //HTTP ... https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
-type HTTP struct {
+type Http struct {
 	// Required
 	URL    string `json:"url"`
 	Method string `json:"method"`
