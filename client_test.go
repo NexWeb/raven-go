@@ -118,7 +118,7 @@ func TestPacketInit(t *testing.T) {
 		t.Errorf("ServerName should not be empty")
 	}
 	if packet.Level != ERROR {
-		t.Errorf("incorrect Level: got %d, want %d", packet.Level, ERROR)
+		t.Errorf("incorrect Level: got %v, want %v", packet.Level, ERROR)
 	}
 	if packet.Logger != "root" {
 		t.Errorf("incorrect Logger: got %s, want %s", packet.Logger, "root")
@@ -239,7 +239,7 @@ func TestUnmarshalTimestamp(t *testing.T) {
 	}
 
 	if actual != expected {
-		t.Errorf("incorrect string; got %s, want %s", actual, expected)
+		t.Errorf("incorrect string; got %v, want %v", actual, expected)
 	}
 }
 
