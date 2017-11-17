@@ -244,7 +244,7 @@ func TestUnmarshalTimestamp(t *testing.T) {
 }
 
 func TestNilClient(t *testing.T) {
-	var client *Client = nil
+	var client *Client
 	eventID, ch := client.Capture(nil, nil)
 	if eventID != "" {
 		t.Error("expected empty eventID:", eventID)
