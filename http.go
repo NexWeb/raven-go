@@ -10,7 +10,8 @@ import (
 	"strings"
 )
 
-func NewHttp(req *http.Request) *Http {
+// NewHTTP ...
+func NewHTTP(req *http.Request) *Http {
 	proto := "http"
 	if req.TLS != nil || req.Header.Get("X-Forwarded-Proto") == "https" {
 		proto = "https"
@@ -44,8 +45,8 @@ func sanitizeQuery(query url.Values) url.Values {
 	return query
 }
 
-// https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
-type Http struct {
+//HTTP ... https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
+type HTTP struct {
 	// Required
 	URL    string `json:"url"`
 	Method string `json:"method"`
@@ -60,9 +61,10 @@ type Http struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
+// Class ...
 func (h *Http) Class() string { return "request" }
 
-// Recovery handler to wrap the stdlib net/http Mux.
+// RecoveryHandler to wrap the stdlib net/http Mux.
 // Example:
 //	http.HandleFunc("/", raven.RecoveryHandler(func(w http.ResponseWriter, r *http.Request) {
 //		...
