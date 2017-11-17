@@ -251,4 +251,3 @@ func init() {
 		trimPaths = append(trimPaths, prefix)
 	}
 }
-
