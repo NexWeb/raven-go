@@ -7,6 +7,7 @@ import (
 
 var errorMsgPattern = regexp.MustCompile(`\A(\w+): (.+)\z`)
 
+// NewException ...
 func NewException(err error, stacktrace *Stacktrace) *Exception {
 	msg := err.Error()
 	ex := &Exception{
@@ -20,7 +21,7 @@ func NewException(err error, stacktrace *Stacktrace) *Exception {
 	return ex
 }
 
-// https://docs.getsentry.com/hosted/clientdev/interfaces/#failure-interfaces
+// Exception ... https://docs.getsentry.com/hosted/clientdev/interfaces/#failure-interfaces
 type Exception struct {
 	// Required
 	Value string `json:"value"`
@@ -31,8 +32,10 @@ type Exception struct {
 	Stacktrace *Stacktrace `json:"stacktrace,omitempty"`
 }
 
+// Class ...
 func (e *Exception) Class() string { return "exception" }
 
+// Culprit ...
 func (e *Exception) Culprit() string {
 	if e.Stacktrace == nil {
 		return ""
@@ -47,4 +50,5 @@ type Exceptions struct {
 	Values []*Exception `json:"values"`
 }
 
+// Class ...
 func (es Exceptions) Class() string { return "exception" }
