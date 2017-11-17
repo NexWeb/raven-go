@@ -1,6 +1,6 @@
 package raven
 
-// https://docs.getsentry.com/hosted/clientdev/interfaces/#message-interface
+// Message ... https://docs.getsentry.com/hosted/clientdev/interfaces/#message-interface
 type Message struct {
 	// Required
 	Message string `json:"message"`
@@ -9,9 +9,10 @@ type Message struct {
 	Params []interface{} `json:"params,omitempty"`
 }
 
+// Class ...
 func (m *Message) Class() string { return "logentry" }
 
-// https://docs.getsentry.com/hosted/clientdev/interfaces/#template-interface
+// Template ... https://docs.getsentry.com/hosted/clientdev/interfaces/#template-interface
 type Template struct {
 	// Required
 	Filename    string `json:"filename"`
@@ -24,9 +25,10 @@ type Template struct {
 	AbsolutePath string   `json:"abs_path,omitempty"`
 }
 
+// Class ...
 func (t *Template) Class() string { return "template" }
 
-// https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
+// User ... https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
 type User struct {
 	// All fields are optional
 	ID       string `json:"id,omitempty"`
@@ -35,9 +37,10 @@ type User struct {
 	IP       string `json:"ip_address,omitempty"`
 }
 
+// Class ...
 func (h *User) Class() string { return "user" }
 
-// https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
+// Query ... https://docs.getsentry.com/hosted/clientdev/interfaces/#context-interfaces
 type Query struct {
 	// Required
 	Query string `json:"query"`
@@ -46,4 +49,5 @@ type Query struct {
 	Engine string `json:"engine,omitempty"`
 }
 
+// Class ...
 func (q *Query) Class() string { return "query" }
